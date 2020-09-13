@@ -1,0 +1,76 @@
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  min-width: 540px;
+}
+
+@media screen and (min-width: 810px) {
+  .grid-container {
+	  display: grid;
+	  grid-template-columns: auto auto auto;
+	  grid-gap: 10px;
+	  justify-content: space-evenly;
+	  margin-bottom: 20px;
+	  min-width: 810px;
+	}
+}
+
+@media screen and (min-width: 1350px) {
+  .grid-container {
+	  display: grid;
+	  grid-template-columns: auto auto auto auto auto;
+	  grid-gap: 10px;
+	  justify-content: space-evenly;
+	  margin-bottom: 20px;
+	  min-width: 1350px;
+	}
+}
+
+.grid-container > a > div {
+	background-color: #000000;
+	padding: 20px 20px 20px 20px;
+	border-radius: 10px;
+}
+
+.gameName {
+	font-size: 30px; 
+	color: #ffffff; 
+	text-overflow: ellipsis; 
+	max-width: 200px;
+	line-height: 2.5ex;
+	height: 5ex;
+	display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.gameProducer {
+	font-size: 17px; 
+	color: #ffffff; 
+	text-overflow: ellipsis; 
+	max-width: 200px;
+	line-height: 2.5ex;
+	height: 5ex;
+	display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.gamePrice {
+	font-size: 17px; 
+	color: #6600cc; 
+	text-overflow: ellipsis; 
+	max-width: 200px;
+	line-height: 2.5ex;
+	height: 2.5ex;
+	display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+	overflow: hidden;
+}

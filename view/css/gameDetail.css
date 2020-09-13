@@ -1,0 +1,126 @@
+#grid-container {
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 20px;
+  background-color: #000000;
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 400px;
+}
+
+@media screen and (min-width: 810px) {
+  #grid-container {
+    display: grid;
+    grid-template-columns: max-content auto;
+    grid-gap: 20px;
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 10px;
+  }
+}
+
+#grid-container > div {
+  text-align: left;
+  justify-content: start;
+}
+
+#gameName {
+	font-size: 30px; 
+	color: #ffffff; 
+	text-overflow: ellipsis; 
+	max-width: auto;
+	line-height: 2.5ex;
+	height: 2.5ex;
+	display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+#gameProducer {
+	font-size: 17px; 
+	color: #ffffff; 
+	text-overflow: ellipsis; 
+	max-width: auto;
+	line-height: 2.5ex;
+	height: 2.5ex;
+	display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+#gameDescription {
+  font-size: 17px; 
+  color: #ffffff; 
+  text-overflow: ellipsis; 
+  max-width: auto;
+  line-height: 2.5ex;
+  height: 7.5ex;
+  display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: justify;
+}
+
+#gamePrice {
+	font-size: 17px; 
+	color: #6600cc; 
+	text-overflow: ellipsis; 
+	max-width: auto;
+	line-height: 2.5ex;
+	height: 2.5ex;
+	display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+#gameQuantity {
+  font-size: 17px; 
+  color: #6600cc; 
+  text-overflow: ellipsis; 
+  max-width: auto;
+  line-height: 2.5ex;
+  height: 2.5ex;
+  display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#orderButton {
+  float: left;
+  height: 70px;
+  width: 200px;
+  background-color: #6600cc;
+  color: #ffffff;
+  font-size: 25px; 
+
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px;
+
+  border-radius: 10px;
+  border: none;
+}
+
+#inputQuantityLabel {
+  font-size: 17px; 
+  color: #ffffff; 
+  text-overflow: ellipsis; 
+  max-width: auto;
+  line-height: 2.5ex;
+  height: 2.5ex;
+  display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding-left: 10px;
+}
+
+#inputQuantityBox {
+  margin-left: 10px;
+  width: 100px;
+}
