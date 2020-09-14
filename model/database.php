@@ -21,7 +21,7 @@ class Database {
   }
 
   protected function getGameList() {
-    $sql = "SELECT Name, Picture, Producer, Price FROM Games";
+    $sql = "SELECT Name, Picture, Producer, Price FROM games";
     $games = $this->conn->query($sql);
     return $games;
   }
@@ -29,7 +29,7 @@ class Database {
   protected function getGameDetail($name) {
     $sql = "
       SELECT Name, Picture, Producer, Price, Description, Quantity 
-      FROM Games 
+      FROM games 
       WHERE Name = '{$name}'";
     $game = $this->conn->query($sql);
     return $game;
