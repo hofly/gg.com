@@ -16,6 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `adminlogin`
+--
+
+DROP TABLE IF EXISTS `adminlogin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `adminlogin` (
+  `adminID` int(11) NOT NULL AUTO_INCREMENT,
+  `adminname` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`adminID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `adminlogin`
+--
+
+LOCK TABLES `adminlogin` WRITE;
+/*!40000 ALTER TABLE `adminlogin` DISABLE KEYS */;
+INSERT INTO `adminlogin` VALUES (1,'anhhnt','1');
+/*!40000 ALTER TABLE `adminlogin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `games`
 --
 
@@ -51,4 +76,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-14  8:57:37
+-- Dump completed on 2020-09-15 18:24:25

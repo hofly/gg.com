@@ -1,6 +1,7 @@
 <?php
 
 class Database {
+
   protected $conn;
 
   function __construct() {
@@ -19,7 +20,9 @@ class Database {
   function __destruct() {
     $this->conn->close();
   }
+}
 
+class GetData extends Database {
   protected function getGameList() {
     $sql = "SELECT Name, Picture, Producer, Price FROM games";
     $games = $this->conn->query($sql);
@@ -35,5 +38,14 @@ class Database {
     return $game;
   }
 }
+
+class GetAdmin extends Database {
+  protected function getAllAdmin() {
+    $sql = "SELECT * FROM adminlogin";
+    $admins = $this->conn->query($sql);
+    return $admins;
+  }
+}
+
 
 ?>

@@ -1,7 +1,7 @@
 <?php
-  require_once("model/database.php");
+  require("model/database.php");
 
-  class Controller extends Database{
+  class Controller extends GetData {
     public function viewAll() {
       $games = $this->getGameList();
       include 'view/gameList.php';
