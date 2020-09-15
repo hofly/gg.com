@@ -8,7 +8,7 @@ class Database {
     $servername = "localhost";
     $username = "root";
     $password = "1";
-    $dbname = "gameWeb";
+    $dbname = "gameweb";
 
     $this->conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -39,7 +39,7 @@ class GetData extends Database {
   }
 }
 
-class GetAdmin extends Database {
+class Admin extends Database {
   protected function getAllAdmin() {
     $sql = "SELECT * FROM adminlogin";
     $admins = $this->conn->query($sql);
@@ -47,5 +47,13 @@ class GetAdmin extends Database {
   }
 }
 
-
+class Game extends Database {
+  protected function addGame($name, $picture, $producer, $price, $description, $quantity) {
+    $sql = "INSERT INTO games (Name, Picture, Producer, Price, Description, Quantity)
+      VALUES ('{$name}', '{$picture}', '{$producer}', {$price}, '{$description}', {$quantity})
+    ";
+    echo $sql;
+    $this->conn->query($sql);
+  }
+}
 ?>

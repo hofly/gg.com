@@ -2,8 +2,9 @@
   session_start();
 
   require("../model/database.php");
+  require("test_input.php");
  
-  class Validate extends GetAdmin {
+  class Validate extends Admin {
     public function validateInput() {
       $admins = $this->getAllAdmin();
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -27,13 +28,6 @@
 
       }
     }
-  }
-
-  function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
   }
 
   $vali = new Validate();

@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Game detail</title>
+	<title>Admin login</title>
   <link rel="stylesheet" href="css/adminLogin.css">
   <link rel="stylesheet" href="css/background.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
