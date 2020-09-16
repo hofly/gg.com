@@ -11,6 +11,10 @@
       $game = $this->getGameDetail($_GET['gamename']);
       include 'view/gameDetail.php';
     }
+
+    public function viewCart() {
+      include 'view/cartPage.php';
+    }
   }
 
 ?>

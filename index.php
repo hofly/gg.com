@@ -4,9 +4,11 @@
   
   $controller = new Controller();
   
-  if (!isset($_GET['gamename'])) {
-    $controller->viewAll();
+  if (isset($_GET['gamename'])) {
+  	$controller->viewGameDetail(); 
+	} elseif (isset($_GET['cart'])) {
+    $controller->viewCart(); 
   } else {
-    $controller->viewGameDetail(); 
+  	$controller->viewAll();  
   }
 ?>

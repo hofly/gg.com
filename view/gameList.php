@@ -7,6 +7,7 @@
 </head>
 <body>
   <?php include 'slogan.html';?>
+  <?php include 'cartIcon.html';?>
   <div class="grid-container">
     <?php
       if ($games->num_rows > 0) {

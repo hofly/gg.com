@@ -1,0 +1,46 @@
+#inputBox {
+  width: 280px; 
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  background-color: #000000;
+  border: 5px solid #ffffff;
+}
+
+#inputBox > h1 { 
+  font-size: 30px; 
+  color: #6600cc;
+  overflow: hidden;
+  border-bottom: 4px solid #191970; 
+  padding: 13px; 
+} 
+
+.textbox { 
+  width: 100%; 
+  overflow: hidden; 
+  padding: 8px 0; 
+  margin: 8px 0; 
+  border-bottom: 1px solid #6600cc; 
+} 
+
+.textbox > input { 
+  border: none; 
+  outline: none; 
+  color: #ffffff;
+  background: none; 
+  font-size: 20px; 
+  margin: 0 10px; 
+} 
+
+#addButton { 
+  width: 100%; 
+  padding: 8px; 
+  color: #ffffff; 
+  background: none #191970; 
+  border: none; 
+  border-radius: 6px; 
+  font-size: 18px; 
+  cursor: pointer; 
+  margin: 12px 0; 
+} 

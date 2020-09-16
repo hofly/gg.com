@@ -22,6 +22,7 @@
                 alert('Invalid admin');
                 window.location.href='../view/adminLogin.php';
               </script>";
+              die();
             } 
           }
         }

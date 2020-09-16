@@ -7,6 +7,7 @@
 </head>
 <body>
   <?php include 'slogan.html';?>
+  <?php include 'cartIcon.html';?>
   <?php
     if ($game->num_rows > 0) {
       while ($gameInfo = $game->fetch_assoc()) {
@@ -20,10 +21,14 @@
               <h3 id='gameDescription'>{$gameInfo["Description"]}</h3>
               <h3 id='gamePrice'>Price: \${$gameInfo["Price"]}</h3>
               <h3 id='gameQuantity'>In stock: {$gameInfo["Quantity"]}</h3>
-              <form action='/addToCart.php'>
+              <form action='controller/addToCart.php' method = 'post'>
                 <input id='orderButton' type='submit' value='ORDER NOW'>
                 <label id='inputQuantityLabel' for='quantity'>Your quantity:</label><br>
-                <input id='inputQuantityBox' type='number' id='quantity' name='quantity' value=0>         
+                <input id='inputQuantityBox' type='number' id='quantity' name='quantity' step='1' min='0' value=1>  
+
+                <input type='hidden' name='gameName' value='{$gameInfo["Name"]}'/>
+                <input type='hidden' name='quantityInStock' value='{$gameInfo["Quantity"]}'/>
+                <input type='hidden' name='price' value='{$gameInfo["Price"]}'/>
               </form> 
             </div>
           </div>

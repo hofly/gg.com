@@ -15,8 +15,8 @@
     <h1>Hello <?php echo $_SESSION['admin']['adminname']?></h1>
     <input type="button" value="Add a game" class="button" 
       onClick="document.location.href='../view/addGame.php'" />
-    <input type="button" value="Add csv file" class="button" 
-      onClick="document.location.href='../controller/adminLogout.php?logout=1'" />
+    <input type="button" value="Add file csv" class="button" 
+      onClick="document.location.href='../view/addFileCSV.php'" />
     <input type="button" value="Logout" class="button" 
       onClick="document.location.href='../controller/adminLogout.php?logout=1'" />
   </div>

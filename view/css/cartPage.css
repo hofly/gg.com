@@ -1,0 +1,31 @@
+#container {
+  background-color: #000000;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.title {
+	font-size: 30px; 
+	color: #ffffff; 
+	text-overflow: ellipsis; 
+	max-width: auto;
+	line-height: 2.5ex;
+	height: 2.5ex;
+	display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  color: #ffffff;
+}

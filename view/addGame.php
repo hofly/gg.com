@@ -27,7 +27,7 @@
 				<input type="number" step="0.01" min="0" placeholder="Price" name="price" value="" required> 
 			</div>
 			<div class = "textBox">
-				<input type="text" placeholder="Description" name="description" value="" required> 
+				<input type="text" placeholder="Description" name="description" value="" required>  
 			</div>
 			<div class = "textBox">
 				<input type="number" step="1" min="0" placeholder="Quantity" name="quantity" value="" required> 

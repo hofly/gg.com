@@ -24,7 +24,7 @@ class Database {
 
 class GetData extends Database {
   protected function getGameList() {
-    $sql = "SELECT Name, Picture, Producer, Price FROM games";
+    $sql = "SELECT Name, Picture, Producer, Price FROM games WHERE Quantity > 0";
     $games = $this->conn->query($sql);
     return $games;
   }
@@ -50,9 +50,23 @@ class Admin extends Database {
 class Game extends Database {
   protected function addGame($name, $picture, $producer, $price, $description, $quantity) {
     $sql = "INSERT INTO games (Name, Picture, Producer, Price, Description, Quantity)
-      VALUES ('{$name}', '{$picture}', '{$producer}', {$price}, '{$description}', {$quantity})
+      VALUES ('{$name}', '{$picture}', '{$producer}', {$price}, \"{$description}\", {$quantity})
     ";
-    echo $sql;
+    $this->conn->query($sql);
+  }
+
+  protected function getNames() {
+    $sql = "SELECT Name FROM games";
+    $names = $this->conn->query($sql);
+    return $names;
+  }
+
+
+  protected function updateGame($name, $newPicture, $newProducer, $newPrice, $newDescription, $newQuantity) {
+    $sql = "
+      UPDATE games 
+      SET Picture = '{$newPicture}', Producer = '{$newProducer}', Price = {$newPrice}, Description = \"{$newDescription}\", Quantity = {$newQuantity} 
+      WHERE Name = '{$name}'";
     $this->conn->query($sql);
   }
 }
