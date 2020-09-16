@@ -14,8 +14,8 @@
     public function execute() {
 
       if(isset($_FILES['fileCSV'])){
-
-        $file_ext = strtolower(end(explode('.',$_FILES['fileCSV']['name'])));
+        $path = $_FILES['fileCSV']['name'];
+        $file_ext = pathinfo($path, PATHINFO_EXTENSION);
         $extensions = "csv";
 
         if($file_ext !== $extensions){
@@ -36,11 +36,11 @@
             continue;
           } elseif (empty($gameData["Producer"])) {
             continue;
-          } elseif (empty($gameData["Price"]) && $gameData[Price]!=0) {
+          } elseif (empty($gameData["Price"]) && $gameData["Price"]!=0) {
             continue;
           } elseif (empty($gameData["Description"])) {
             continue;
-          } elseif (empty($gameData["Quantity"]) && $gameData[Quantity]!=0) {
+          } elseif (empty($gameData["Quantity"]) && $gameData["Quantity"]!=0) {
             continue;
           } elseif ($gameData["Price"] < 0) {
             continue;

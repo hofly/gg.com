@@ -22,49 +22,35 @@
         echo "
           <table>
             <tr>
-              <th>Company</th>
-              <th>Contact</th>
-              <th>Country</th>
+              <th>Game name</th>
+              <th>Quantity</th>
+              <th>Price</th>
             </tr>
         ";
 
-        echo "
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-          </tr>
-          <tr>
-            <td>Centro comercial Moctezuma</td>
-            <td>Francisco Chang</td>
-            <td>Mexico</td>
-          </tr>
-          <tr>
-            <td>Ernst Handel</td>
-            <td>Roland Mendel</td>
-            <td>Austria</td>
-          </tr>
-          <tr>
-            <td>Island Trading</td>
-            <td>Helen Bennett</td>
-            <td>UK</td>
-          </tr>
-          <tr>
-            <td>Laughing Bacchus Winecellars</td>
-            <td>Yoshi Tannamuri</td>
-            <td>Canada</td>
-          </tr>
-          <tr>
-            <td>Magazzini Alimentari Riuniti</td>
-            <td>Giovanni Rovelli</td>
-            <td>Italy</td>
-          </tr>
-        ";
+        $cart = $_SESSION["cart"];
+        $totalPrice = 0;
+        foreach ($cart as $orderLine) {
+          $gamePrice = $orderLine['Price']*$orderLine['Quantity'];
+          $totalPrice = $totalPrice + $gamePrice;
+          echo "
+            <tr>
+              <td>{$orderLine['Name']}</td>
+              <td>{$orderLine['Quantity']}</td>
+              <td>{$gamePrice}\$</td>
+            </tr>
+          ";
+        }
 
+        echo "
+          <td colspan='2'>TOTAL PRICE</td>
+          <td>{$totalPrice}\$</td>
+        ";
         echo "</table>";
       }
     ?>
-
+    <input id = "clearCartButton" type="button" value="Clear cart" class="button" 
+      onClick="document.location.href='controller/clearCart.php?clearcart=1'" />
   </div>
 </body>
 </html>

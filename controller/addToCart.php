@@ -2,7 +2,17 @@
   session_start();
 
   require("test_input.php");
- 
+  
+  function compareQuantity($quantity, $quantityInStock){
+    if ($quantity > $quantityInStock) {
+      echo "<script>
+        alert('We have only {$quantityInStock} product(s) left');
+        history.back();
+      </script>";
+      die();
+    } 
+  }
+
   class addToCart {
     public function execute() {
 
@@ -15,13 +25,7 @@
 
         if (!isset($_SESSION["cart"])) {
 
-          if ($quantity > $quantityInStock) {
-            echo "<script>
-              alert('There is only {$quantityInStock} product(s) left');
-              history.back();
-            </script>";
-            die();
-          } 
+          compareQuantity($quantity, $quantityInStock);
 
           $orderLine = array("Name"=>$name, "Quantity"=>$quantity, "Price"=>$price);
           $_SESSION["cart"] = array();
@@ -36,13 +40,7 @@
               $checkDuplicate = true;
               $duplicateKey = $key;
               $sumQuantity = $line["Quantity"] + $quantity;
-              if ($sumQuantity > $quantityInStock) {
-                echo "<script>
-                  alert('There is only {$quantityInStock} product(s) left');
-                  history.back();
-                </script>";
-                die();
-              } 
+              compareQuantity($sumQuantity, $quantityInStock);
             }
           }
 
@@ -50,6 +48,7 @@
             $orderLine = array("Name"=>$name, "Quantity"=>$sumQuantity, "Price"=>$price);
             $_SESSION["cart"][$duplicateKey] = $orderLine;
           } else {
+            compareQuantity($quantity, $quantityInStock);
             $orderLine = array("Name"=>$name, "Quantity"=>$quantity, "Price"=>$price);
             array_push($_SESSION["cart"], $orderLine);
           }

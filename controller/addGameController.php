@@ -15,8 +15,6 @@
         $price = test_input($_POST["price"]); 
         $description = test_input($_POST["description"]); 
         $quantity = test_input($_POST["quantity"]); 
-        
-        echo $description;
 
         $names = $this->getNames();
         $gameExisted = false;
