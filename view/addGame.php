@@ -13,7 +13,7 @@
 <body>
 	<form action = "../controller/addGameController.php" method = "post">
 		<div id = "inputBox">
-			<h1>Game infomation</h1>
+			<h1>Game information</h1>
 			<div class = "textBox">
 				<input type="text" placeholder="Name" name="name" value="" required> 
 			</div>
