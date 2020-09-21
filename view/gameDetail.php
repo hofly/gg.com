@@ -21,7 +21,7 @@
               <h3 id='gameDescription'>{$gameInfo["Description"]}</h3>
               <h3 id='gamePrice'>Price: \${$gameInfo["Price"]}</h3>
               <h3 id='gameQuantity'>In stock: {$gameInfo["Quantity"]}</h3>
-              <form action='controller/addToCart.php' method = 'post'>
+              <form action='controller/addToCartController.php' method = 'post'>
                 <input id='orderButton' type='submit' value='ORDER NOW'>
                 <label id='inputQuantityLabel' for='quantity'>Your quantity:</label><br>
                 <input id='inputQuantityBox' type='number' id='quantity' name='quantity' step='1' min='0' value=1>  

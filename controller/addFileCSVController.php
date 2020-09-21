@@ -1,87 +1,79 @@
 <?php
-  // session_start();
+// session_start();
 
-  require("../model/database.php");
-  require("test_input.php");
-  
-  function assoc_getcsv($csv_file) {
-    $r = array_map('str_getcsv', file($csv_file));
-    foreach( $r as $k => $d ) { $r[$k] = array_combine($r[0], $r[$k]); }
-    return array_slice($r,1);
-  }  
+require("../model/database.php");
+require("test_input.php");
 
-  class AddFileCSVController extends Game {
-    public function execute() {
+function assoc_getcsv($csv_file) {
+  $r = array_map('str_getcsv', file($csv_file));
+  foreach( $r as $k => $d ) { $r[$k] = array_combine($r[0], $r[$k]); }
+  return array_slice($r,1);
+}  
 
-      if(isset($_FILES['fileCSV'])){
-        $path = $_FILES['fileCSV']['name'];
-        $file_ext = pathinfo($path, PATHINFO_EXTENSION);
-        $extensions = "csv";
+class AddFileCSVController extends Game {
+  public function execute() {
 
-        if($file_ext !== $extensions){
-          echo "<script>
-            alert('Please choose a csv file!');
-            window.location.href='../view/addFileCSV.php';
-          </script>";
-          die();
-        }
+    if(isset($_FILES['fileCSV'])){
+      $path = $_FILES['fileCSV']['name'];
+      $file_ext = pathinfo($path, PATHINFO_EXTENSION);
+      $extensions = "csv";
 
-        $tmpName = $_FILES['fileCSV']['tmp_name'];
-        $dataArray = assoc_getcsv($tmpName);
-        
-        foreach($dataArray as $gameData) {
-          if (empty($gameData["Name"])) {
-            continue;
-          } elseif (empty($gameData["Picture"])) {
-            continue;
-          } elseif (empty($gameData["Producer"])) {
-            continue;
-          } elseif (empty($gameData["Price"]) && $gameData["Price"]!=0) {
-            continue;
-          } elseif (empty($gameData["Description"])) {
-            continue;
-          } elseif (empty($gameData["Quantity"]) && $gameData["Quantity"]!=0) {
-            continue;
-          } elseif ($gameData["Price"] < 0) {
-            continue;
-          } elseif ($gameData["Quantity"] < 0) {
-            continue;
-          } elseif (filter_var($gameData["Price"], FILTER_VALIDATE_FLOAT) == FALSE) {
-            continue;
-          } elseif (filter_var($gameData["Quantity"], FILTER_VALIDATE_INT) === FALSE 
-              && filter_var($gameData["Quantity"], FILTER_VALIDATE_INT) != 0) {
-            continue;
-          } elseif (filter_var($gameData["Picture"], FILTER_VALIDATE_URL) === FALSE) {
-            continue;
+      if($file_ext !== $extensions){
+        echo "<script>
+          alert('Please choose a csv file!');
+          window.location.href='../view/addFileCSV.php';
+        </script>";
+        die();
+      }
+
+      $tmpName = $_FILES['fileCSV']['tmp_name'];
+      $dataArray = assoc_getcsv($tmpName);
+      
+      foreach($dataArray as $gameData) {
+        if (empty($gameData["Name"])) {
+          continue;
+        } elseif (empty($gameData["Picture"])) {
+          continue;
+        } elseif (empty($gameData["Producer"])) {
+          continue;
+        } elseif (empty($gameData["Price"]) && $gameData["Price"]!=0) {
+          continue;
+        } elseif (empty($gameData["Description"])) {
+          continue;
+        } elseif (empty($gameData["Quantity"]) && $gameData["Quantity"]!=0) {
+          continue;
+        } elseif ($gameData["Price"] < 0) {
+          continue;
+        } elseif ($gameData["Quantity"] < 0) {
+          continue;
+        } elseif (filter_var($gameData["Price"], FILTER_VALIDATE_FLOAT) == FALSE) {
+          continue;
+        } elseif (filter_var($gameData["Quantity"], FILTER_VALIDATE_INT) === FALSE 
+            && filter_var($gameData["Quantity"], FILTER_VALIDATE_INT) != 0) {
+          continue;
+        } elseif (filter_var($gameData["Picture"], FILTER_VALIDATE_URL) === FALSE) {
+          continue;
+        } else {
+
+          $checkDone = $this->addGameAfterCheck($gameData["Name"], $gameData["Picture"], $gameData["Producer"], $gameData["Price"], $gameData["Description"], $gameData["Quantity"]);
+          if ($checkDone === true) {
           } else {
-
-            $names = $this->getNames();
-            $gameExisted = false;
-
-            while ($name = $names->fetch_assoc()) {
-              if ($gameData["Name"] === $name["Name"]) {
-                $gameExisted =true;
-              }
-            }
-
-            if ($gameExisted === true) {
-              $this->updateGame($gameData["Name"], $gameData["Picture"], $gameData["Producer"], $gameData["Price"], $gameData["Description"], $gameData["Quantity"]);
-            } else {
-              $this->addGame($gameData["Name"], $gameData["Picture"], $gameData["Producer"], $gameData["Price"], $gameData["Description"], $gameData["Quantity"]);
-            }
-            
+            die("Error!");
           }
         }
-
       }
+
+      echo "<script>
+        alert('Game(s) in .csv added successfully!');
+        window.location.href='../view/adminPage.php';
+      </script>";
+
     }
   }
+}
 
-  $add = new AddFileCSVController();
-  $add->execute();
-  echo "<script>
-    alert('Game(s) in .csv added successfully!');
-    window.location.href='../view/adminPage.php';
-  </script>";
-  
+$add = new AddFileCSVController();
+$add->execute();
+
+
 ?>
